@@ -1,5 +1,7 @@
-# CRED-T9
-Team ID: CRED-T9 | Team Members: Harikesh Pallantla &amp; Nitesh Tarani
+# CRED
+Credit Card Management System
+Back End developed by Harikesh Pallantla
+Front End developed by Nitesh Tarani
 
 ## Introduction
 A one stop solution to manage all your credit cards. For each payment the user will be rewarded with exciting rewards.
