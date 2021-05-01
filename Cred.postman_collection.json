@@ -1,0 +1,451 @@
+{
+	"info": {
+		"_postman_id": "c98d17e6-fe05-4537-afcd-ae16892cb3a6",
+		"name": "Cred",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"\tpm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test(\"Token not null check\", function () {\r",
+							"\tpm.expect(jsonData.token).is.not.null;\r",
+							"});\r",
+							"pm.collectionVariables.set(\"token\", jsonData.token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"emailId\": \"admin@crio.do\",\r\n\t\"password\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sign Up",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"\tpm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"emailId\": \"admin@crio.do\",\r\n\t\"password\": \"admin\",\r\n\t\"firstName\": \"admin\",\r\n\t\"mobileNumber\": \"919876543210\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User by ID",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/user/10921076-8b62-4862-ad65-58b277d06659",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"10921076-8b62-4862-ad65-58b277d06659"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User by ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/user/10921076-8b62-4862-ad65-58b277d06659",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"10921076-8b62-4862-ad65-58b277d06659"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Card",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBjcmlvLmRvIiwiaWF0IjoxNjE1ODMyNjk0LCJleHAiOjE2MTY5NTYyMDB9.YRMqLixWxJEfRwXENLHFn9kB-ja8oCDtLp0aLQ3bAO5Wkp8wATdoBh3XVapiKM8-MIlokeau_i-x85KKO3pJVQ"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"cardNickName\": \"testname\",\r\n\t\"cardNumber\": \"1234123412341234\",\r\n\t\"cardPaymentService\": \"AMERICAN_EXPRESS\",\r\n\t\"cvv\": 246,\r\n\t\"expiryDate\": \"04/2022\",\r\n\t\"nameOnCard\": \"John Doe\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/cards",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add statement",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n\t{\r\n\t\t\"amount\": 100.25,\r\n\t\t\"category\": \"electronics\",\r\n\t\t\"transactionDate\": \"2021-03-19T10:21:49.834Z\",\r\n\t\t\"transactionType\": \"CREDIT\",\r\n\t\t\"vendor\": \"amazon\"\r\n\t},\r\n\t{\r\n\t\t\"amount\": 300.69,\r\n\t\t\"category\": \"food\",\r\n\t\t\"transactionDate\": \"2021-03-20T10:21:49.834Z\",\r\n\t\t\"transactionType\": \"CREDIT\",\r\n\t\t\"vendor\": \"swiggy\"\r\n\t}\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/cards/85dc8167-7268-4cbb-8277-b0cf334c08e2/statements/2021/03",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cards",
+						"85dc8167-7268-4cbb-8277-b0cf334c08e2",
+						"statements",
+						"2021",
+						"03"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Payment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"amount\": 400.94\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/cards/85dc8167-7268-4cbb-8277-b0cf334c08e2/pay",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cards",
+						"85dc8167-7268-4cbb-8277-b0cf334c08e2",
+						"pay"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Cards",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBjcmlvLmRvIiwiaWF0IjoxNjE1ODMyNjk0LCJleHAiOjE2MTY5NTYyMDB9.YRMqLixWxJEfRwXENLHFn9kB-ja8oCDtLp0aLQ3bAO5Wkp8wATdoBh3XVapiKM8-MIlokeau_i-x85KKO3pJVQ"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/cards",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cards"
+					],
+					"query": [
+						{
+							"key": "size",
+							"value": "3",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "0",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get card by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBjcmlvLmRvIiwiaWF0IjoxNjE1ODMyNjk0LCJleHAiOjE2MTY5NTYyMDB9.YRMqLixWxJEfRwXENLHFn9kB-ja8oCDtLp0aLQ3bAO5Wkp8wATdoBh3XVapiKM8-MIlokeau_i-x85KKO3pJVQ"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/cards/85dc8167-7268-4cbb-8277-b0cf334c08e2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cards",
+						"85dc8167-7268-4cbb-8277-b0cf334c08e2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Card Statement",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/cards/85dc8167-7268-4cbb-8277-b0cf334c08e2/statements/2021/03",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cards",
+						"85dc8167-7268-4cbb-8277-b0cf334c08e2",
+						"statements",
+						"2021",
+						"03"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Card Smart Statement by category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/cards/85dc8167-7268-4cbb-8277-b0cf334c08e2/category/smart-statement/2021/03",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cards",
+						"85dc8167-7268-4cbb-8277-b0cf334c08e2",
+						"category",
+						"smart-statement",
+						"2021",
+						"03"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Card Smart Statement by vendor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/cards/85dc8167-7268-4cbb-8277-b0cf334c08e2/vendor/smart-statement/2021/03",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cards",
+						"85dc8167-7268-4cbb-8277-b0cf334c08e2",
+						"vendor",
+						"smart-statement",
+						"2021",
+						"03"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}

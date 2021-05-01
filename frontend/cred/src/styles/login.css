@@ -1,0 +1,27 @@
+.form {
+    margin: 5% auto;
+    max-width: 25%;
+}
+
+.login-form-heading {
+    text-align: center;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    justify-content: end;
+    padding-top: 10px;
+}
+
+.progressbar {
+    margin-top: 10px;
+}
+
+.pay_custom_amount_div {
+    display: flex;
+    flex-direction: row;
+}
+.pay_custom_amount {
+    margin-left: 12px;
+}
