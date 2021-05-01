@@ -12,6 +12,8 @@ A one stop solution to manage all your credit cards. For each payment the user w
 - React
 - Java
 - PostgreSQL
+- Hibernate
+- JWT
 
 ## Features
 - User Authentication
